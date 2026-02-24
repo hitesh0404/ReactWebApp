@@ -1,5 +1,5 @@
 import { useState,useEffect } from 'react';
-import { useParams,Outlet } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 function ProductDetails() {
     const params = useParams();
@@ -11,7 +11,6 @@ function ProductDetails() {
         setProduct(await productsData.json());
       }
         getProduct();
-    
     }, []);
     useEffect(() => {
       if (product) {
@@ -32,7 +31,6 @@ function ProductDetails() {
                   ></span>
                   Loading...
                 </button>
-            <Outlet></Outlet>
           </div>
         </div>
       </>
