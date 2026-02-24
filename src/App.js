@@ -67,3 +67,10 @@ function App() {
 }
 
 export default App;
+
+
+
+// git clone https://github.com/hitesh0404/ReactWebApp.git
+// cd ReactWebApp
+// npm i
+// npm start
