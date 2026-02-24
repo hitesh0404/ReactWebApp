@@ -25,36 +25,40 @@ function Product() {
     return (
       <>
         <div>
-          <div className="container row">
-            <div className="col-3">
-              <ProductFilter></ProductFilter>
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-3">
+                <ProductFilter></ProductFilter>
+              </div>
+              <div className="col-9">
+                <button class="btn btn-primary" type="button" disabled>
+                  <span
+                    class="spinner-border spinner-border-sm"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                  Loading...
+                </button>
+              </div>
             </div>
-            <div className="col-9">
-              <button class="btn btn-primary" type="button" disabled>
-                <span
-                  class="spinner-border spinner-border-sm"
-                  role="status"
-                  aria-hidden="true"
-                ></span>
-                Loading...
-              </button>
-            </div>
+            <Outlet></Outlet>
           </div>
-          <Outlet></Outlet>
         </div>
       </>
     );
   return (
     <div>
-      <div className="container row">
-        <div className="col-3">
-          <ProductFilter></ProductFilter>
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-3">
+            <ProductFilter></ProductFilter>
+          </div>
+          <div className="col-9">
+            <ProductList products={productList}></ProductList>
+          </div>
         </div>
-        <div className="col-9">
-          <ProductList products = {productList} ></ProductList>
-        </div>
+        <Outlet></Outlet>
       </div>
-      <Outlet></Outlet>
     </div>
   );
 }
