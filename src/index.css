@@ -15,3 +15,6 @@ code {
 .active{
   font-size: larger;
 }
+.errors{
+  color: red !important;
+}
