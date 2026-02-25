@@ -10,24 +10,25 @@ function LoginForm() {
     const onSubmit = (data)=>{
         console.log(data);
     }
+    
   return (<>
     <div>LoginForm</div>
-    <form >
+    <form  onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="username">Username</label>
-        <input type="text" id="username" {...register("username"), {required}} />
+        <input type="text" id="username" {...register("username" , {required : true})} />
+        <p>{errors.username && errors.username?.message }</p>
         <label htmlFor="password">Password</label>
-        <input type="text" id="password" {...register("password"),
+        <input type="password" id="password" {...register("password" ,
         {
-            required,
-            minLength:{
-                value:8,
-                message:"length should be min 8 character long"
-            }
-        }} />
-        {errors.name && errors.message}
+            required :{ 
+              value: true,
+              message:"this field is required"},
+
+        })} />
+        {errors.password  && errors.password.message}
+        <button type="submit">Submit</button>
     </form>
   </>
   )
 }
-
 export default LoginForm

@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Navbar from './components/Navbar';
 import Carousel from './components/Carousel';
 import Product from './pages/Product';
+import LoginForm from './components/LoginForm';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -31,19 +32,19 @@ const router = createBrowserRouter([
           <>
             <Product></Product>
           </>
-        ), 
-      }, 
+        ),
+      },
       {
         path: "product-details/:id",
         element: (
-        <>
-          <ProductDetails></ProductDetails>
-        </>
+          <>
+            <ProductDetails></ProductDetails>
+          </>
         ),
       },
-    ]
-    },
-      {
+    ],
+  },
+  {
     path: "/about",
     element: (
       <>
@@ -52,14 +53,22 @@ const router = createBrowserRouter([
       </>
     ),
   },
-    ],
-);
+  {
+    path: "/login",
+    element: (
+      <>
+        <Navbar></Navbar>
+        <LoginForm></LoginForm>,
+      </>
+    ),
+  },
+]);
 
 function App() {
   return (
     <>
 
-      <div class="container-fluid">
+      <div className="container-fluid">
         <RouterProvider router={router}></RouterProvider>
       </div>
     </>
