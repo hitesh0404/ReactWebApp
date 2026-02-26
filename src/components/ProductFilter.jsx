@@ -24,7 +24,7 @@ function ProductFilter({ categories }) {
               name="category"
               id={category}
               value={category}
-              /><label>{category}</label><br/>
+              /><label htmlFor={category}>{category}</label><br/>
               </>)
           })}
       </form>

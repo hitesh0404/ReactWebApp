@@ -9,7 +9,7 @@ function Product() {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
     async function getProducts() {
-      let productsData = await fetch("http://127.0.0.1:5500/data.json");
+      let productsData = await fetch("https://dummyjson.com/products/");
       setProductList(await productsData.json());
     }
       getProducts();
@@ -18,13 +18,11 @@ function Product() {
   useEffect(() => {
     if (productList) {
       setIsLoading(false);
-      productList.products.forEach((product)=>{
        const uniqueCategories = [
         ...new Set(productList.products.map((product) => product.category)),
        ];
 
        setCategories(uniqueCategories);
-      })
     }
   }, [productList]);
 
