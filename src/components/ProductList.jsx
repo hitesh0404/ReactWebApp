@@ -8,35 +8,34 @@ function ProductList({products}) {
       <div className="row">
       {products.products.map((product, index) => {
         return (
-          <>
             <div key={index} className="col-4">
-              <div class="card text-start">
+              <div className="card text-start">
                 <img
-                  class="card-img-top"
+                  className="card-img-top"
                   src={product.images[0]}
                   alt={product.title}
                 />
-                <div class="card-body">
-                  <h4 class="card-title">
+                <div className="card-body">
+                  <h4 className="card-title">
                     {product.title.length > 20
                       ? product.title.slice(0, 20) + "..."
                       : product.title}
                   </h4>
-                  <p class="card-text">
+                  <p className="card-text">
                     {product.description.slice(0, 30) + "..."}
                   </p>
                   <div className="d-grid gap-2">
-                    <button type="button" className="btn btn-primary"
-                    onClick={()=>navigate(`/product-details/${product.id}`)}
+                    <button
+                      type="button"
+                      className="btn btn-primary"
+                      onClick={() => navigate(`/product-details/${product.id}`)}
                     >
                       View Details
                     </button>
                   </div>
-                  
                 </div>
               </div>
             </div>
-          </>
         );
       })}
       </div>

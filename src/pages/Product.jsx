@@ -6,18 +6,25 @@ import { useState,useEffect } from 'react';
 function Product() {
   const [productList, setProductList] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [categories, setCategories] = useState([]);
   useEffect(() => {
     async function getProducts() {
       let productsData = await fetch("http://127.0.0.1:5500/data.json");
       setProductList(await productsData.json());
     }
-    setTimeout(() => {
       getProducts();
-    }, 3000);
+   
   }, []);
   useEffect(() => {
     if (productList) {
       setIsLoading(false);
+      productList.products.forEach((product)=>{
+       const uniqueCategories = [
+        ...new Set(productList.products.map((product) => product.category)),
+       ];
+
+       setCategories(uniqueCategories);
+      })
     }
   }, [productList]);
 
@@ -28,12 +35,12 @@ function Product() {
           <div className="container-fluid">
             <div className="row">
               <div className="col-3">
-                <ProductFilter></ProductFilter>
+                <ProductFilter categories ={categories} ></ProductFilter>
               </div>
               <div className="col-9">
-                <button class="btn btn-primary" type="button" disabled>
+                <button className="btn btn-primary" type="button" disabled>
                   <span
-                    class="spinner-border spinner-border-sm"
+                    className="spinner-border spinner-border-sm"
                     role="status"
                     aria-hidden="true"
                   ></span>
@@ -51,10 +58,10 @@ function Product() {
       <div className="container-fluid">
         <div className="row">
           <div className="col-3">
-            <ProductFilter></ProductFilter>
+            <ProductFilter categories={categories}></ProductFilter>
           </div>
           <div className="col-9">
-            <ProductList products={productList}></ProductList>
+            <ProductList products={productList} ></ProductList>
           </div>
         </div>
         <Outlet></Outlet>

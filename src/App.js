@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import Carousel from './components/Carousel';
 import Product from './pages/Product';
 import LoginForm from './components/LoginForm';
+import RegisterForm from './components/RegisterForm';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -59,6 +60,15 @@ const router = createBrowserRouter([
       <>
         <Navbar></Navbar>
         <LoginForm></LoginForm>,
+      </>
+    ),
+  },
+  {
+    path: "/register",
+    element: (
+      <>
+        <Navbar></Navbar>
+        <RegisterForm></RegisterForm>,
       </>
     ),
   },

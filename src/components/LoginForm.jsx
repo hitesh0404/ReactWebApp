@@ -10,14 +10,7 @@ function LoginForm() {
   const onSubmit = (data) => {
     console.log(data);
   };
-  function isValid(password) {
-    if (!password)               return "this field is required";
-    if (password.length < 8)     return "min length of password should be greater then 8";
-    if (password.length > 16)    return "Max length of password should be less then 16";
-    if (!/[0-9]/.test(password)) return "number required";
-    if (!/[A-Z]/.test(password)) return "uppercase required";
-    if (!/[a-z]/.test(password)) return "lowercase required";
-  }
+  
   return (
     <>
       <div>LoginForm</div>
@@ -38,7 +31,6 @@ function LoginForm() {
               value: true,
               message: "this field is required",
             },
-            validate: isValid,
           })}
         />
        <p className="errors"> {errors.password && errors.password.message}</p>
