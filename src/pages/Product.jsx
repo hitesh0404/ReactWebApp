@@ -3,7 +3,7 @@ import ProductFilter from '../components/ProductFilter';
 import ProductList from '../components/ProductList';
 import { useState,useEffect } from 'react';
 
-function Product() {
+function Product({msg}) {
   const [filters, setFilters] = useState({
     categories: [],
     selectedCategories: [],
@@ -33,7 +33,10 @@ function Product() {
     if (filters.selectedCategories.length === 0) {
       setFilteredProducts(
         productList.filter((product) => {
-          return product.rating > filters.minRating;
+          return (
+            product.rating > filters.minRating &&
+            product.rating < filters.maxRating
+          );
         }),
       );
        }
@@ -42,7 +45,8 @@ function Product() {
           productList.filter((product) => {
             return (
               filters.selectedCategories.includes(product.category) &&
-              product.rating > filters.minRating
+              product.rating > filters.minRating &&
+              product.rating < filters.maxRating
             );
           }),
         ); 
@@ -86,7 +90,7 @@ function Product() {
             ></ProductFilter>
           </div>
           <div className="col-9">
-            <ProductList products={filteredProducts}></ProductList>
+            <ProductList msg={msg} products={filteredProducts}></ProductList>
           </div>
         </div>
         <Outlet></Outlet>

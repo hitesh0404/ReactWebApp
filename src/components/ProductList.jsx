@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
 
-function ProductList({products}) {
+function ProductList({products,msg}) {
   const navigate = useNavigate();
   return (
     <>
       <div>ProductList</div>
+      <div>{msg}</div>
       <div className="row">
       {products.map((product, index) => {
         return (

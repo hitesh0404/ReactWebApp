@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
+import { AppContext } from "./AppContext";
 function ProductFilter({ filters, setFilters,  }) {
+  const user = useContext(AppContext);
   const {
     register,
     handleSubmit,
@@ -31,9 +33,10 @@ function ProductFilter({ filters, setFilters,  }) {
     <div style={{ border: "2px solid green" }}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="categories">Categories</label>
+        <p>{user}</p>
         <br />
         {filters.categories &&
-          filters.categories.map((category,index) => {
+          filters.categories.map((category, index) => {
             return (
               <div key={index}>
                 <input
@@ -49,11 +52,31 @@ function ProductFilter({ filters, setFilters,  }) {
             );
           })}
         <hr></hr>
-        <label htmlFor="rating">Min Rating</label>
-        <input type="range" name="rating" id="rating" min={1} max={5} onChange={(e)=>{
-          setFilters({...filters,minRating:e.target.value})
-        }}/>{filters.minRating}
-       
+        <label htmlFor="min-rating">Min Rating</label>
+        <input
+          type="range"
+          name="min-rating"
+          id="min-rating"
+          min={1}
+          max={5}
+          onChange={(e) => {
+            setFilters({ ...filters, minRating: e.target.value });
+          }}
+        />
+        {filters.minRating}
+        <hr />
+        <label htmlFor="max-rating">Max Rating</label>
+        <input
+          type="range"
+          name="max-rating"
+          id="max-rating"
+          min={1}
+          max={5}
+          onChange={(e) => {
+            setFilters({ ...filters, maxRating: e.target.value });
+          }}
+        />
+        {filters.maxRating}
       </form>
     </div>
   );

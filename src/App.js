@@ -8,6 +8,7 @@ import Carousel from './components/Carousel';
 import Product from './pages/Product';
 import LoginForm from './components/LoginForm';
 import RegisterForm from './components/RegisterForm';
+const msg="hi there";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
         path: "/products",
         element: (
           <>
-            <Product></Product>
+            <Product msg = {msg}></Product>
           </>
         ),
       },
