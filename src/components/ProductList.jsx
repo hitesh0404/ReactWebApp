@@ -6,7 +6,7 @@ function ProductList({products}) {
     <>
       <div>ProductList</div>
       <div className="row">
-      {products.products.map((product, index) => {
+      {products.map((product, index) => {
         return (
             <div key={index} className="col-4">
               <div className="card text-start">
