@@ -49,22 +49,11 @@ function ProductFilter({ filters, setFilters,  }) {
             );
           })}
         <hr></hr>
-        {filters.selectedCategories &&
-          filters.selectedCategories.map((category,index) => {
-            return (
-              <div key={index}>
-                <input
-                  type="checkbox"
-                  name="category"
-                  id={category}
-                  value={category}
-                  onChange={handleCategoryChange}
-                />
-                <label htmlFor={category}>{category}</label>
-                <br />
-              </div>
-            );
-          })}
+        <label htmlFor="rating">Min Rating</label>
+        <input type="range" name="rating" id="rating" min={1} max={5} onChange={(e)=>{
+          setFilters({...filters,minRating:e.target.value})
+        }}/>{filters.minRating}
+       
       </form>
     </div>
   );

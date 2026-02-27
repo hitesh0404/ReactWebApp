@@ -31,14 +31,22 @@ function Product() {
     if (!productList) return;
    
     if (filters.selectedCategories.length === 0) {
-      setFilteredProducts(productList);
-    } else {
-        
       setFilteredProducts(
-        productList.filter((product) =>
-          filters.selectedCategories.includes(product.category),
-        ),
+        productList.filter((product) => {
+          return product.rating > filters.minRating;
+        }),
       );
+       }
+      else{
+        setFilteredProducts(
+          productList.filter((product) => {
+            return (
+              filters.selectedCategories.includes(product.category) &&
+              product.rating > filters.minRating
+            );
+          }),
+        ); 
+      
     }
   }, [filters, productList]);
   if (!productList)
